@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../models/game_model.dart';
 import '../providers/app_state.dart';
 import 'checkout_success_screen.dart';
+import 'checkout_error_screen.dart';
 import 'reviews_screen.dart';
 import 'achievements_screen.dart';
 import 'catalog_screen.dart';
@@ -137,6 +138,13 @@ class GameDetailScreen extends StatelessWidget {
               },
               child: const Text('Agregar al carrito', style: TextStyle(fontSize: 16, color: Colors.white)),
             ),
+          ),
+          const SizedBox(height: 8),
+          TextButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (_) => const CheckoutErrorScreen()));
+            },
+            child: const Text('Simular error de pago', style: TextStyle(color: Colors.redAccent, fontSize: 12)),
           ),
         ],
       ),

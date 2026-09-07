@@ -6,14 +6,12 @@ class AppState extends ChangeNotifier {
   final List<Game> _cart = [];
 
   final List<Game> _allGames = [
-    Game(id: '1', title: 'Elden Ring', price: '\$59.99', category: 'RPG', description: 'RPG de acción en mundo abierto.'),
-    Game(id: '2', title: 'Cyberpunk 2077', price: '\$29.99', category: 'RPG', description: 'Futurismo y acción en Night City.'),
-    Game(id: '3', title: 'FC 24', price: '\$49.99', category: 'Deportes', description: 'El simulador de fútbol definitivo.'),
-    Game(id: '4', title: 'NBA 2K24', price: '\$39.99', category: 'Deportes', description: 'Vive la emoción del baloncesto profesional.'),
-    Game(id: '5', title: 'God of War', price: '\$39.99', category: 'Acción', description: 'Aventura mitológica épica de Kratos.'),
-    Game(id: '6', title: 'Devil May Cry 5', price: '\$24.99', category: 'Acción', description: 'Acción vertiginosa y estilo hack and slash.'),
-    Game(id: '7', title: 'Civilization VI', price: '\$19.99', category: 'Estrategia', description: 'Construye un imperio que resista el paso del tiempo.'),
-    Game(id: '8', title: 'Age of Empires II', price: '\$14.99', category: 'Estrategia', description: 'Estrategia clásica en tiempo real remasterizada.'),
+    Game(id: '1', title: 'Elden Ring Nightreign', price: '\$69.99', category: 'RPG', description: 'Nueva entrega multijuger cooperativo ambientada en el universo de Elden Ring.'),
+    Game(id: '2', title: 'Super Mario Advance', price: '\$19.99', category: 'Acción', description: 'Clásico de plataformas y aventura de Nintendo Game Boy Advance.'),
+    Game(id: '3', title: 'Pokémon Edición Azul', price: '\$24.99', category: 'RPG', description: 'El clásico RPG original de Game Boy para atraparlos a todos.'),
+    Game(id: '4', title: 'Dragon Warrior Monsters 2', price: '\$29.99', category: 'Estrategia', description: 'Aventura épica de rol y domesticación de monstruos para Game Boy Color.'),
+    Game(id: '5', title: 'FC 24', price: '\$49.99', category: 'Deportes', description: 'El simulador de fútbol definitivo con todas las ligas y licencias oficiales.'),
+    Game(id: '6', title: 'God of War Laufey', price: '\$59.99', category: 'Acción', description: 'Nueva aventura mitológica centrada en la historia de Laufey.'),
   ];
 
   String get selectedCategory => _selectedCategory;
