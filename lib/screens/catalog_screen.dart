@@ -181,13 +181,15 @@ class CatalogScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Expanded(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xFF7C3AED).withValues(alpha: 0.15),
-                                      borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
-                                    ),
-                                    child: const Center(
-                                      child: Icon(Icons.sports_esports, size: 45, color: Colors.purpleAccent),
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
+                                    child: Image.network(
+                                      game.imageUrl,
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                      errorBuilder: (context, error, stackTrace) => const Center(
+                                        child: Icon(Icons.sports_esports, size: 40, color: Colors.purpleAccent),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -206,7 +208,7 @@ class CatalogScreen extends StatelessWidget {
                                       Text(game.category, style: const TextStyle(color: Colors.grey, fontSize: 11)),
                                       const SizedBox(height: 8),
                                       Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
                                             game.price,

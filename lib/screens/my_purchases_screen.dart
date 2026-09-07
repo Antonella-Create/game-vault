@@ -8,8 +8,22 @@ class MyPurchasesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Game> purchasedGames = [
-      Game(id: '1', title: 'Elden Ring', price: '\$59.99', category: 'RPG', description: 'RPG de acción en mundo abierto.'),
-      Game(id: '3', title: 'FC 24', price: '\$49.99', category: 'Deportes', description: 'El simulador de fútbol definitivo.'),
+      Game(
+        id: '1',
+        title: 'Elden Ring Nightreign',
+        price: '\$69.99',
+        category: 'RPG',
+        description: 'Nueva entrega multijugador cooperativo ambientada en el universo de Elden Ring.',
+        imageUrl: 'https://res.cloudinary.com/h3zsa1nd/image/upload/v1788750472/WhatsApp_Image_2026-09-06_at_1.08.02_PM.jpg',
+      ),
+      Game(
+        id: '5',
+        title: 'FC 24',
+        price: '\$49.99',
+        category: 'Deportes',
+        description: 'El simulador de fútbol definitivo con todas las ligas y licencias oficiales.',
+        imageUrl: 'https://res.cloudinary.com/h3zsa1nd/image/upload/v1788750472/WhatsApp_Image_2026-09-06_at_1.09.06_PM.jpg',
+      ),
     ];
 
     return Scaffold(
@@ -24,11 +38,20 @@ class MyPurchasesScreen extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 12),
             child: ListTile(
               contentPadding: const EdgeInsets.all(12),
-              leading: Container(
-                width: 60,
-                height: 60,
-                color: Colors.grey[800],
-                child: const Icon(Icons.sports_esports, color: Colors.purpleAccent),
+              leading: ClipRRect(
+                borderRadius: BorderRadius.circular(6),
+                child: Image.network(
+                  game.imageUrl,
+                  width: 50,
+                  height: 50,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => Container(
+                    width: 50,
+                    height: 50,
+                    color: Colors.grey[800],
+                    child: const Icon(Icons.sports_esports, color: Colors.purpleAccent),
+                  ),
+                ),
               ),
               title: Text(game.title, style: const TextStyle(fontWeight: FontWeight.bold)),
               subtitle: Padding(
