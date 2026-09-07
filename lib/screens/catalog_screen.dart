@@ -20,7 +20,7 @@ class CatalogScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('GAMEVAULT', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1.2)),
+        title: const Text('GAMEVAULT', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1.2, fontSize: 18)),
         actions: [
           Stack(
             children: [
@@ -120,57 +120,47 @@ class CatalogScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: Row(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 120,
-            color: const Color(0xFF14151B),
-            child: ListView(
-              padding: const EdgeInsets.all(8),
-              children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
-                  child: Text('GÉNEROS', style: TextStyle(color: Colors.grey, fontSize: 11, fontWeight: FontWeight.bold, letterSpacing: 1)),
-                ),
-                ...categories.map((cat) {
-                  final isSelected = appState.selectedCategory == cat;
-                  return InkWell(
-                    onTap: () => appState.selectCategory(cat),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
-                      margin: const EdgeInsets.only(bottom: 6),
-                      decoration: BoxDecoration(
-                        color: isSelected ? const Color(0xFF7C3AED).withValues(alpha: 0.25) : Colors.transparent,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: isSelected ? const Color(0xFF7C3AED) : Colors.transparent),
-                      ),
-                      child: Text(
-                        cat,
-                        style: TextStyle(
-                          color: isSelected ? Colors.purpleAccent : Colors.white70,
-                          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                          fontSize: 13,
-                        ),
-                      ),
+          SizedBox(
+            height: 55,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              itemCount: categories.length,
+              itemBuilder: (context, index) {
+                final cat = categories[index];
+                final isSelected = appState.selectedCategory == cat;
+                return Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: ChoiceChip(
+                    label: Text(cat),
+                    selected: isSelected,
+                    selectedColor: const Color(0xFF7C3AED),
+                    backgroundColor: const Color(0xFF181A20),
+                    labelStyle: TextStyle(
+                      color: isSelected ? Colors.white : Colors.white70,
+                      fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                     ),
-                  );
-                }),
-              ],
+                    onSelected: (_) => appState.selectCategory(cat),
+                  ),
+                );
+              },
             ),
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(12.0),
               child: appState.filteredGames.isEmpty
                   ? const Center(child: Text('No hay juegos en esta categoría', style: TextStyle(color: Colors.grey)))
                   : GridView.builder(
                       itemCount: appState.filteredGames.length,
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        childAspectRatio: 0.75,
-                        crossAxisSpacing: 14,
-                        mainAxisSpacing: 14,
+                        crossAxisCount: 2,
+                        childAspectRatio: 0.72,
+                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 12,
                       ),
                       itemBuilder: (context, index) {
                         final game = appState.filteredGames[index];
@@ -208,7 +198,7 @@ class CatalogScreen extends StatelessWidget {
                                     children: [
                                       Text(
                                         game.title,
-                                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                       ),
@@ -216,11 +206,11 @@ class CatalogScreen extends StatelessWidget {
                                       Text(game.category, style: const TextStyle(color: Colors.grey, fontSize: 11)),
                                       const SizedBox(height: 8),
                                       Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
                                             game.price,
-                                            style: const TextStyle(color: Colors.purpleAccent, fontWeight: FontWeight.bold, fontSize: 14),
+                                            style: const TextStyle(color: Colors.purpleAccent, fontWeight: FontWeight.bold, fontSize: 13),
                                           ),
                                           InkWell(
                                             onTap: () {
