@@ -31,32 +31,6 @@ class GameVaultApp extends StatelessWidget {
           surface: Color(0xFF181A20),
         ),
       ),
-      builder: (context, child) {
-        return MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
-          child: Scaffold(
-            backgroundColor: const Color(0xFF050508),
-            body: Center(
-              child: Container(
-                constraints: const BoxConstraints(maxWidth: 420),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF0F1016),
-                  borderRadius: BorderRadius.circular(24),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.6),
-                      blurRadius: 20,
-                      spreadRadius: 5,
-                    ),
-                  ],
-                ),
-                clipBehavior: Clip.antiAlias,
-                child: child,
-              ),
-            ),
-          ),
-        );
-      },
       home: const CatalogScreen(),
     );
   }

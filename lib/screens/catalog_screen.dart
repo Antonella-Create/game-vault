@@ -4,7 +4,6 @@ import '../providers/app_state.dart';
 import 'game_detail_screen.dart';
 import 'cart_screen.dart';
 import 'my_purchases_screen.dart';
-import 'reviews_screen.dart';
 import 'achievements_screen.dart';
 import 'login_admin_screen.dart';
 import 'login_screen.dart';
@@ -92,14 +91,6 @@ class CatalogScreen extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.star_outline, color: Colors.purpleAccent),
-              title: const Text('Reseñas Generales'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(context, MaterialPageRoute(builder: (_) => const ReviewsScreen()));
-              },
-            ),
-            ListTile(
               leading: const Icon(Icons.emoji_events_outlined, color: Colors.purpleAccent),
               title: const Text('Logros y Progreso'),
               onTap: () {
@@ -157,10 +148,10 @@ class CatalogScreen extends StatelessWidget {
                   : GridView.builder(
                       itemCount: appState.filteredGames.length,
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 0.72,
-                        crossAxisSpacing: 12,
-                        mainAxisSpacing: 12,
+                        crossAxisCount: 4, // Adaptado a escritorio para mostrar más columnas en web
+                        childAspectRatio: 0.75,
+                        crossAxisSpacing: 16,
+                        mainAxisSpacing: 16,
                       ),
                       itemBuilder: (context, index) {
                         final game = appState.filteredGames[index];
